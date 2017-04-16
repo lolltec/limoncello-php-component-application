@@ -1,4 +1,4 @@
-<?php namespace Limoncello\Application\Traits;
+<?php namespace Limoncello\Application\Packages\Data;
 
 /**
  * Copyright 2015-2017 info@neomerx.com
@@ -16,23 +16,22 @@
  * limitations under the License.
  */
 
-use Generator;
+use Limoncello\Contracts\Settings\SettingsInterface;
 
 /**
  * @package Limoncello\Application
  */
-trait SelectClassImplementsTrait
+abstract class DataSettings implements SettingsInterface
 {
-    /**
-     * @param string[] $classNames
-     * @param string   $interfaceName
-     *
-     * @return Generator
-     */
-    protected function selectClassImplements(array $classNames, string $interfaceName): Generator
-    {
-        foreach ($classNames as $className) {
-            array_key_exists($interfaceName, class_implements($className)) === false ?: yield $className;
-        }
-    }
+    /** Settings key */
+    const KEY_MIGRATIONS_PATH = 0;
+
+    /** Settings key */
+    const KEY_SEEDS_PATH = self::KEY_MIGRATIONS_PATH + 1;
+
+    /** Settings key */
+    const KEY_SEED_INIT = self::KEY_SEEDS_PATH + 1;
+
+    /** Settings key */
+    const KEY_LAST = self::KEY_SEED_INIT + 1;
 }

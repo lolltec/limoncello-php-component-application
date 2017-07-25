@@ -1,4 +1,4 @@
-<?php namespace Limoncello\Tests\Application\Data\CoreSettings\Configurators;
+<?php namespace Limoncello\Application\Packages\L10n;
 
 /**
  * Copyright 2015-2017 info@neomerx.com
@@ -16,19 +16,20 @@
  * limitations under the License.
  */
 
-use Limoncello\Contracts\Application\ContainerConfiguratorInterface;
-use Limoncello\Contracts\Container\ContainerInterface;
+use Limoncello\Contracts\Provider\ProvidesContainerConfiguratorsInterface;
 
 /**
- * @package Limoncello\Tests\Application
+ * @package Limoncello\Application
  */
-class ContainerConfigurator1 implements ContainerConfiguratorInterface
+class L10nProvider implements ProvidesContainerConfiguratorsInterface
 {
     /**
      * @inheritdoc
      */
-    public static function configureContainer(ContainerInterface $container): void
+    public static function getContainerConfigurators(): array
     {
-        $container[self::class] = 'Hello container';
+        return [
+            L10nContainerConfigurator::class,
+        ];
     }
 }

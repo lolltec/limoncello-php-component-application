@@ -1,4 +1,4 @@
-<?php namespace Limoncello\Tests\Application\Data\CoreSettings\Configurators;
+<?php
 
 /**
  * Copyright 2015-2017 info@neomerx.com
@@ -16,19 +16,6 @@
  * limitations under the License.
  */
 
-use Limoncello\Contracts\Application\ContainerConfiguratorInterface;
-use Limoncello\Contracts\Container\ContainerInterface;
-
-/**
- * @package Limoncello\Tests\Application
- */
-class ContainerConfigurator1 implements ContainerConfiguratorInterface
-{
-    /**
-     * @inheritdoc
-     */
-    public static function configureContainer(ContainerInterface $container): void
-    {
-        $container[self::class] = 'Hello container';
-    }
-}
+return [
+    'some_key' => 'Sample message.',
+];

@@ -17,13 +17,13 @@
  */
 
 use InvalidArgumentException;
-use Limoncello\Contracts\Data\ModelSchemeInfoInterface;
+use Limoncello\Contracts\Data\ModelSchemaInfoInterface;
 use Limoncello\Contracts\Data\RelationshipTypes;
 
 /**
  * @package Limoncello\Application
  */
-class ModelSchemeInfo implements ModelSchemeInfoInterface
+class ModelSchemaInfo implements ModelSchemaInfoInterface
 {
     /**
      * @var array
@@ -119,7 +119,7 @@ class ModelSchemeInfo implements ModelSchemeInfoInterface
         string $primaryKey,
         array $attributeTypes,
         array $attributeLengths
-    ): ModelSchemeInfoInterface {
+    ): ModelSchemaInfoInterface {
         if (empty($class) === true) {
             throw new InvalidArgumentException('class');
         }
@@ -337,7 +337,7 @@ class ModelSchemeInfo implements ModelSchemeInfoInterface
         string $foreignKey,
         string $reverseClass,
         string $reverseName
-    ): ModelSchemeInfoInterface {
+    ): ModelSchemaInfoInterface {
         $this->registerRelationshipType(RelationshipTypes::BELONGS_TO, $class, $name);
         $this->registerRelationshipType(RelationshipTypes::HAS_MANY, $reverseClass, $reverseName);
 
@@ -360,7 +360,7 @@ class ModelSchemeInfo implements ModelSchemeInfoInterface
         string $reverseForeignKey,
         string $reverseClass,
         string $reverseName
-    ): ModelSchemeInfoInterface {
+    ): ModelSchemaInfoInterface {
         $this->registerRelationshipType(RelationshipTypes::BELONGS_TO_MANY, $class, $name);
         $this->registerRelationshipType(RelationshipTypes::BELONGS_TO_MANY, $reverseClass, $reverseName);
 
